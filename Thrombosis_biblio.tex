@@ -595,7 +595,7 @@ Up to date it is accepted that there are three enzymatic events that conduct to 
 \includegraphics[scale=0.4]{Figures/ActivationFXIIa.png}
 \caption{\label{fig:activationFXIIa} Enzymatic reactions for activation of  factor XII from \citet{Chatterjee:2009a}}
 \end{figure}
-The model of Chatterjee was used to predict the thrombin production time of a quiescent blood sample in the absence of tissue factor. The model propose that the main mechanism for thrombin formation is activation of factor XII. If only the contact system was taken into account the model would include the reactions in Table~\ref{Tab:Sourceterms}.\\
+The model of Chatterjee was used to predict the thrombin production time of a quiescent blood sample in the absence of tissue factor. The model propose that the main mechanism for thrombin formation is activation of factor XII. If only the contact system was taken into account the model would include the reactions in Table~\ref{Tab:Sourceterms}.
 \begin{table}[h]
 \begin{tabular}{p{7 cm} p{3 cm} p{3 cm} p{3 cm}}
 \hline
@@ -615,20 +615,19 @@ $XII_{a} + XI \leftrightarrow XII_{a}/XI \rightarrow XII_{a} + XI_{a}$ & $k_{17}
 \end{tabular}
 \caption{\label{Tab:Sourceterms} Kinetic constants for first, second order and Michaelis-Menten enzymatic reaction from \citet{Chatterjee:2010}}
 \end{table}
-
 \begin{table}[h]
 \begin{tabular}{p{2.5 cm}  p{13 cm}}
 \hline
 Species & $R_{i}$  \\
 \hline
 \\
-$XII$ & $-k_{1} C_{XII} - \frac{k_{4}C_{XII}C_{XII_{a}}}{km_{1} + C_{XII} } - \frac{k_{10}C_{XII}C_{K}}{km_{3} + C_{XII}}$ \\\\
-$XII_{a}$ & $k_{1} C_{XII} + \frac{k_{4}C_{XII}C_{XII_{a}}}{km_{1} + C_{XII} }+ \frac{k_{10}C_{XII}C_{K}}{km_{3} + C_{XII}} - k_{13} C_{CTI} C_{XII_{a}} + k_{14} C_{CTI / XII_{a}} - k_{15}C_{C1_{inh}} C_{XII_{a}} -k_{16}C_{ATIII} C_{XII_{a}} $ \\\\
-$XII_{a} / XII $ & $k_{2} C_{XII_{a}} C_{XII} - k_{3} C_{XII_{a}/XII} - k_{4} C_{XII_{a}/XII} - k_{5} C_{XII_{a}}C_{PK} + k_{6} C_{XII_{a}/PK} + k_{10}C_{K/XII} - k_{13} C_{CTI} C_{XII_{a}} + k_{14} C_{CTI / XII_{a}}-k_{15}C_{C1_{inh}}-k_{16}C_{ATIII} C_{XII_{a}}- k_{17}C_{XI}C_{XII_{a}} + k_{18}C_{XI/XII_{a}} $ \\
-$PK$ & $-\frac{k_{7}C_{PK}C_{XII_{a}}}{km_{2}+C_{PK}}-k_{11}C_{PK}C_{K}$\\\\
-$PK / XII_{a} $ & $k_{5} C_{XII_{a}}C_{PK} - k_{6} C_{XII_{a}/PK} - k_{7} C_{PK / XII_{a}} $\\
-$K$ & $\frac{k_{7}C_{PK}C_{XII_{a}}}{km_{2}+C_{PK}} + k_{11}C_{PK} C_{K} - k_{12} C_{K} $ \\\\
-$K / XII $ & $ k_{8} C_{K} C_{XII}-k_{9}C_{K/XII}-k_{10}C_{K/XII}$ \\
+$XII$ & $-k_{1} C_{XII} + k_{3} C_{XII_{a}/XII} - k_{2} C_{XII} C_{XII_{a}}- k_{8} C_{K} C_{XII} + k_{9} C_{K/XII}$ \\\\
+$XII_{a}$ & $k_{1} C_{XII} + (k_{3} + 2k_{4})  C_{XII_{a}/XII} - k_{2} C_{XII} C_{XII_{a}} - k_{5} C_{XII_{a}} C_{PK} + (k_{6} + k_{7}) C_{XII_{a}/PK}  +  k_{10} C_{K/XII} - k_{13} C_{CTI} C_{XII_{a}} + k_{14} C_{CTI / XII_{a}} - k_{15}C_{C1_{inh}} C_{XII_{a}} -k_{16}C_{ATIII} C_{XII_{a}} - k_{17}C_{XI}C_{XII_{a}} + (k_{18}+k_{19})C_{XI/XII_{a}}$ \\\\
+$XII_{a} / XII $ & $k_{2} C_{XII_{a}} C_{XII} - (k_{3}+ k_{4}) C_{XII_{a}/XII} $ \\\\
+$PK$ & $ -k_{5} C_{XII_{a}} C_{PK} + k_{6} C_{XII_{a}/PK} -k_{11}C_{PK}C_{K}$\\\\
+$ XII_{a} / PK  $ & $k_{5} C_{XII_{a}}C_{PK} - (k_{6} +  k_{7}) C_{XII_{a}/PK}$\\\\
+$K$ & $ k_{7} C_{XII_{a}/PK}- k_{8} C_{K} C_{XII} + (k_{9}+k_{10})C_{K/XII} + k_{11}C_{PK} C_{K} - k_{12} C_{K} $ \\\\
+$K / XII $ & $ k_{8} C_{K} C_{XII}-(k_{9}+k_{10})C_{K/XII}$ \\\\
 $K.Inhibited$ & $k_{12}C_{K}$\\\\
 $CTI $ & $- k_{13} C_{CTI} C_{XII_{a}} + k_{14} C_{CTI / XII_{a}} $ \\ \\
 $CTI / XII_{a}$ & $k_{13} C_{CTI} C_{XII_{a}}- k_{14} C_{CTI / XII_{a}}$\\ \\
@@ -636,13 +635,12 @@ $C1_{inh}$ & $ -k_{15}C_{C1_{inh}} C_{XII_{a}}$\\\\
 $C1_{inh} / XII_{a}$ & $k_{15}C_{C1_{inh}} C_{XII_{a}}$\\\\
 $ATIII$ & $-k_{16}C_{ATIII} C_{XII_{a}} $\\\\
 $ATIII/XII_{a}$&$k_{16}C_{ATIII}C_{XII_{a}}$\\\\
-$XI$ & $-\frac{k_{19}C_{XI}C_{XII_{a}}}{km_{1}+C_{XI}}$\\\\
-$XI$ & $-k_{17}C_{XI}C_{XII_{a}} + k_{18}C_{XI/XII_{a}} $ \\
-$XII_{a} / XI$ & $k_{17}C_{XI}C_{XII_{a}}-k_{18}C_{XI/XII_{a}} - k_{19} C_{XI/XII_{a}}  $\\
-$XI_{a}$ & $\frac{k_{19}C_{XI}C_{XII_{a}}}{km_{1}+C_{XI}}$\\\\
+$XI$ & $-k_{17}C_{XI}C_{XII_{a}} + k_{18}C_{XI/XII_{a}}  $ \\\\
+$XII_{a} / XI$ & $k_{17}C_{XI}C_{XII_{a}}-k_{18}C_{XI/XII_{a}} - k_{19} C_{XI/XII_{a}} + k_{17}C_{XI}C_{XII_{a}} - (k_{18}+k_{19})C_{XI/XII_{a}} $\\\\
+$XI_{a}$ & $ k_{19}C_{XI/XII_{a}}$\\
 \hline
 \end{tabular}
-\caption{\label{Tab:Sourceterms} Source terms inferred from \citet{Chatterjee:2010} kinetic scheme. Only intrinsic pathway reactions where consider and that involve $XII_{a}$. Michaelis-Menten constant are: $km_{1} = \frac{k_{4}+k_{3}}{k_{2}}$, $km_{2} = \frac{k_{7}+k_{6}}{k_{5}}$, $km_{3} = \frac{k_{10}+k_{11}}{k_{8}}$} 
+\caption{\label{Tab:Sourceterms} Source terms inferred from \citet{Chatterjee:2010} kinetic scheme. Only intrinsic pathway reactions where consider and that involve $XII_{a}$.} 
 \end{table}
 \begin{table}[h]
 \begin{tabular}{c c c c}
@@ -663,6 +661,7 @@ $XI_{a}$ & $0.0$ & $5.0 \times 10^{-7} $ & \cite{Anand:2003} \\
 \end{tabular}
 \caption{\label{Tab:Initial_Concentrations}Initial bulk concentrations for blood proteins from \cite{Chatterjee:2010} and Diffusion Coefficients (in some cases the value was calculated using the correlation of \cite{Young} with the molecular weight.)}
 \end{table}
+
 %In addition to Table~\ref{Tab:Initial_Concentrations} the boundary condition at the wall for factor XII is $\frac{\partial C_{XII}}{\partial t} = 0$ thus the concentration of factor XII at the wall is constant and with a value of $C_{XII} = xxx$. The boundary condition for all the species at the bulk is $ \frac{\partial C_{i}}{\partial t} = 0$.\\
 %The model of \citet{Guo:2006} predicts the amount of FXIIa produced by a surface of pro-coagulant materials. In this model the pro-coagulant surface is model as an enzyme. Auto-hydrolysis is not taken into account because the production of activated factor XII is marginal next to the production due to auto-activation and reciprocal-activation. Another interesting aspect of this model is that a catalytic potential that takes into account wet-ability is included in the model.
 %The production of  factor XIIa due to auto-activation can be expressed in the form of a Michaelis-Menten mechanism that writes:
@@ -687,6 +686,7 @@ $XI_{a}$ & $0.0$ & $5.0 \times 10^{-7} $ & \cite{Anand:2003} \\
 %\item $k_{s}$ Michaeles Menten dissociation constant $m^{2}$
 %\end{itemize}
 %It is important to mention that the source terms must be added specifically at the artificial surface and not in the complete fluid domain. An interesting work perspective will be to add proper steps of the coagulation cascade until thrombin or fibrin production considering platelet activation by thrombin and due to the shear flow. Also by considering the effects of the shear flow, a criteria could be added for leukocyte expression of tissue factor due to high shear rates hence the amplification of the extrinsic pathway due to leukocyte expression could be study. Finally a kinetic model for the complement system could also be included to address the role of the complement system in thrombin production.
+\pagebreak
 \section{Yales 2 Bio Implementation}
 \subsection{Langmuir Kinetics}
 \subsubsection{OD Channel}
