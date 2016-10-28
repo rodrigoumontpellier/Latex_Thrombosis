@@ -575,10 +575,10 @@ Anand \textit{et al.} \citep{Anand:2003, Anand:2006, Anand:2008} & EP, CP, PAAB,
 \end{table}
 
 As we can see from Table\ref{tab:recap} most of the models are focused on the extrinsic and common pathways thrombosis. Very few articles study thrombosis due to an artificial surface or in other words the intrinsic pathways. In addition complex flow configurations (which is the real case for biomedical devices) and activation of factor XII are not considered in the articles that study the intrinsic pathway \citep{Gregory:1994,Zarnitsina:1996,Mandrusov:1998,Chatterjee:2010,Kogan:2001}.\\ The role of turbulence and pulsate flows in platelet dynamics and coagulation pathways as well as the leukocyte expression of tissue factor and the complement system interactions with the coagulation cascade remain to be elucidated. In the next section two models to account for protein adsorption dynamics will be presented.
-\subsection{Mathematical model for contact activation in blood flows}
-A simulation of the contact system biochemical reactions immersed in a blood flow remains absent in the literature. Most of the models consider a source of activated factor IXa or a posterior activated factor. In order to investigate the contact pathway initiation in realistic flow regimes a kinetic enzymatic mechanism of factor XII activation can be couple in the form of a convection diffusion reaction equation communicating with the Navier Stokes equations.\\
+\subsection{Mathematical modelling of contact activation in blood flows}
+The efforts to model thrombosis due to blood contacting medical devices have focused on platelets and in the properties of the blood flow (recirculating regions, wall shear stress, etc). Even though contact activation seems to be the initial event of device related thrombosis only one attempt to model the contact system convected and diffused by blood flow can be found in \citep{Gregory:1994}. Gregory and co-workers account for a very simplify version of the flow. In order to investigate the contact system in realistic flow regimes a kinetic scheme can be use for instance in the form of a convection diffusion reaction equation.\\
 \subsubsection{Convection diffusion reaction model}
-One of the most common techniques to model thrombosis is the convection diffusion reaction model. This type of model considers a reaction network that is transported by a fluid in the form of diffusion and convection that yields to the following equation. 
+One of the most common techniques to model thrombosis is the convection diffusion reaction model. This type of model considers a reaction network that is transported by a flow. The equation for $i$ species  writes:
 \begin{equation}\label{eq:CDR}
 \frac{\partial C_{i}}{\partial t} + \nabla \cdot (C_{i}u)  = \nabla \cdot (D_{i} \nabla C_{i}) + R_{i}
 \end{equation}
@@ -586,8 +586,10 @@ Where: \\
 $C_{i} : $ Concentration of i species \\
 $D_{i} : $ Diffusion coefficient \\
 $R_{i} : $ Source or sinks of species i \\
-The source terms are obtained from a enzymatic kinetic scheme. Then initial conditions of the species concentrations are given as an input (free flow concentrations or wall concentrations in the case of Factor XII). As we can see from equation~\ref{eq:CDR} the diffusion coefficients and the velocity field are as well inputs in the model. In our case the Navier-Stokes equations for an incompressible fluid are solved to calculate the velocity fields.\\
-A kinetic scheme of the intrinsic pathway can be used to investigate possible effects in the coagulation cascade due to the transport of enzymes. Two models for the activation of factor XII are presented. The first kinetical scheme was presented by \citet{Guo:2006} in which the catalytic potential is taken into account depending on the surface properties. A second scheme is taken from \citet{Chatterjee:2010} in which activation of factor XII is inhibited by two anti-thrombogenic enzymes  and a relations with the complement system are also present.
+$u : $ Flow velocity \\
+
+The source terms are obtained from a kinetic scheme. In our case Navier-Stokes equations for an incompressible flow are solved to calculate the velocity fields.\\
+Two kinetic schemes of the contact systems can be found in literature. The first kinetical scheme was presented by \citet{Guo:2006} in which the catalytic potential is taken into account depending on the surface properties. A second scheme is taken from \citet{Chatterjee:2010} in which activation of factor XII is inhibited by two anti-thrombogenic enzymes and relations with the complement system are also present.
 \subsubsection{Activation of Factor XII}
 Up to date it is accepted that there are three enzymatic events that conduct to factor XII activation (auto-activation, auto-hydrolysis  and reciprocal activation of factor XII) as it is shown in figure~\ref{fig:activationFXIIa}.\\
 
@@ -647,7 +649,7 @@ $XI_{a}$ & $ k_{19}C_{XI/XII_{a}}$\\
 \hline
 Enzyme & Initial concentration $[\mu M]$ & Diffusion Coefficient $ [cm^{2} / s] $ & Reference \\
 \hline
-$XII$ & $ 0.34$ & $ 5.0 \times 10^{-7} $  & \cite{Furie:1988} \footnote{Molecular Weight} \\
+$XII$ & $ 0.34$ & $ 5.0 \times 10^{-7} $  & \cite{Furie:1988} \\
 $XII_{a}$ & $0.0$ & $ 5.0 \times 10^{-7} $ & \cite{Furie:1988} \\
 $PK$ & $0.45$ & $4.46 \times 10^{-7} $ & \cite{Kirk_1977} \\
 $K$ & $0.0$ & $4.59 \times 10^{-7} $ & \cite{Kirk_1977} \\
@@ -662,39 +664,92 @@ $XI_{a}$ & $0.0$ & $5.0 \times 10^{-7} $ & \cite{Anand:2003} \\
 \caption{\label{Tab:Initial_Concentrations}Initial bulk concentrations for blood proteins from \cite{Chatterjee:2010} and Diffusion Coefficients (in some cases the value was calculated using the correlation of \cite{Young} with the molecular weight.)}
 \end{table}
 
-%In addition to Table~\ref{Tab:Initial_Concentrations} the boundary condition at the wall for factor XII is $\frac{\partial C_{XII}}{\partial t} = 0$ thus the concentration of factor XII at the wall is constant and with a value of $C_{XII} = xxx$. The boundary condition for all the species at the bulk is $ \frac{\partial C_{i}}{\partial t} = 0$.\\
-%The model of \citet{Guo:2006} predicts the amount of FXIIa produced by a surface of pro-coagulant materials. In this model the pro-coagulant surface is model as an enzyme. Auto-hydrolysis is not taken into account because the production of activated factor XII is marginal next to the production due to auto-activation and reciprocal-activation. Another interesting aspect of this model is that a catalytic potential that takes into account wet-ability is included in the model.
-%The production of  factor XIIa due to auto-activation can be expressed in the form of a Michaelis-Menten mechanism that writes:
-%\begin{reaction}
-%XII + A <=>[k_1] (XII/A) ->[ k_2] XII_{a} + A    
-%\end{reaction} 
-%in which the FXIIa will be expressed as:
-%\begin{equation}
-%\label{eq:FXIIaprodk2}
-%R_{XII_{a}} = \frac{k_{2} C_{XII} A_{0}}{k_{s}+A_{0}}
-%\end{equation} 
-%if $k_{s}$ is admitted to be the same across different pro-coagulant materials the product of $k_{2} C_{XII} $ can be expressed as a single constant $K_{1}$
-%\begin{equation}
-%\label{eq:FXIIaprod}
-%R_{XII_{a}} = \frac{K_{1} A_{0}}{k_{s}+A_{0}}
-%\end{equation} 
-%which is the source term ($R_{XII_{a}}$) for equation~\ref{eq:CDR}, the variables used in the equations %are: 
-%\begin{itemize}
-%\item $C_{XII}$ concentration of Zymogen factor XII $\mu M$
-%\item $A_O$ initial surface area $m^{2}$
-%\item $K_{1}$ catalytic potential of the pro-coagulant material $\frac{\mu M}{min^{-1}}$
-%\item $k_{s}$ Michaeles Menten dissociation constant $m^{2}$
-%\end{itemize}
-%It is important to mention that the source terms must be added specifically at the artificial surface and not in the complete fluid domain. An interesting work perspective will be to add proper steps of the coagulation cascade until thrombin or fibrin production considering platelet activation by thrombin and due to the shear flow. Also by considering the effects of the shear flow, a criteria could be added for leukocyte expression of tissue factor due to high shear rates hence the amplification of the extrinsic pathway due to leukocyte expression could be study. Finally a kinetic model for the complement system could also be included to address the role of the complement system in thrombin production.
 \pagebreak
-\section{Yales 2 Bio Implementation}
-\subsection{Langmuir Kinetics}
-\subsubsection{OD Channel}
-\subsubsection{1D Channel}
+
+\section{Basic Biochemical reactions}
+Most of the reactions that take place in the coagulation cascade are enzymatic reactions. This reactions can occur in the volume or on the surface. In this section the basic biochemical reactions involved in coagulation are presented with their corresponding test cases to validate the implementation of the code.
+%Langmuir kinetics can be use to describe the protein layer that adsorbs on biomaterials and initiates the contact system. For surface reactions a flux boundary condition needs to be taken into account for the species involved in the reactions. Finally the rest of the reactions that continue the coagulation process take place in the volume and can be model as first, second order reactions or by the Michaeles-Menten model. \\
+%In this section test cases of the previous biochemical reactions are presented with the objective to validate the code.
+\subsection{Langmuir Kinetics (adsorption)}
+When a medical device is coated with blood a dynamic protein layer form in what is know the Vroman effect. The adsorption of proteins on the surface can be described by the Langmuir kinetic model that writes:
+\begin{reaction}
+A + S <=>[$k\sb{s}$][$k\sb{d}$] A_s 
+\end{reaction}
+where:
+\begin{itemize}
+\item A - Protein  $[M] = \dfrac{mol}{m^{3}}$
+\item S - Free surface binding sites $\frac{mol}{m^{2}}$ 
+\item $A_s$ - Protein adsorbed $\frac{1}{m^{2}}$
+\item $k_s$ - adsorption rate $M^{-1}s^{-1}$
+\item $k_d$ - desorption rate $s^{-1}$
+\end{itemize}
+From the reaction we can infer the following source terms $R_i$
+\begin{center}
+$R_{A} = -k_s [A] [S] + k_d [A_s] $ and $R_{A_s} = k_s [A] [S] - k_d [A_s] $  
+\end{center} 
+the total biding sites on the surface can be written as 
+\begin{center}
+$S_T = [S] + [A_s]$
+\end{center}
+it is common to find this expression in terms of surface fractions like 
+\begin{center}
+$1 = \theta_{S} + \theta_{A_s}$
+\end{center}
+\subsubsection{Test Case}
+A simple 2D simulation with two walls and two periodic boundary condition was used to validate the code. On each surface the protein A adsorbs at $t = 0$ the initial concentration $A_0$ adheres to the wall until an equilibrium is achieved. In figure~\ref{Fig:Langmuir} the evolution of a probe located at the center of the upper wall is compared with the analytical solution obtained by the integration in time of $R_{\theta_{A_s}}$. 
+\begin{figure}
+\begin{tikzpicture}[scale = 1.7]
+%upper wall
+\draw[red] (0,2) -- (2,2) node at (1.0,2.4) {$A + S \rightleftarrows A_s$} ;
+\draw (0,2) -- (0.2,2.2) node at (1.0,1.0) {$A_0$} ;
+\draw (0.2,2) -- (0.4,2.2) ;
+\draw (0.4,2) -- (0.6,2.2) ;
+\draw (0.6,2) -- (0.8,2.2) ;
+\draw (0.8,2) -- (1.0,2.2) ;
+\draw (1.0,2) -- (1.2,2.2) ;
+\draw (1.2,2) -- (1.4,2.2) ;
+\draw (1.2,2) -- (1.4,2.2) ;
+\draw (1.2,2) -- (1.4,2.2) ;
+\draw (1.4,2) -- (1.6,2.2) ;
+\draw (1.6,2) -- (1.8,2.2) ;
+\draw (1.8,2) -- (2.0,2.2) ;
+%bottom wall
+\draw[red] (0,0) -- (2,0) node at (1.0,-0.4) {$A + S \rightleftarrows A_s$} ;
+\draw (0,0) -- (0.2,-0.2) ;
+\draw (0.2,0) -- (0.4,-0.2) ;
+\draw (0.4,0) -- (0.6,-0.2) ;
+\draw (0.6,0) -- (0.8,-0.2) ;
+\draw (0.8,0) -- (1.0,-0.2) ;
+\draw (1.0,0) -- (1.2,-0.2) ;
+\draw (1.2,0) -- (1.4,-0.2) ;
+\draw (1.4,0) -- (1.6,-0.2) ;
+\draw (1.6,0) -- (1.8,-0.2) ;
+\draw (1.8,0) -- (2.0,-0.2) ;
+%periodicity left
+\draw[blue] (-0.1,0.9) -- (0.0,1.1) ;
+\draw[blue] (0.0,0.9) -- (0.1,1.1) ;
+%periodicity right
+\draw[blue] (1.9,0.9) -- (2.0,1.1) ;
+\draw [blue](2.0,0.9) -- (2.1,1.1) ;
+%notation
+\draw[red,->,thick] (0.1,0.1) -- (-0.6,0.4) node at (-0.6,0.6) {Reactive wall} ;
+\draw[blue,->,thick] (-0.1,1.0) -- (-0.6,1.2) node at (-0.6,1.4) {Periodicity} ;
+%probe 
+\draw[->,thick] (1.0,2.0) -- (3.0,1.6) ;
+\node[inner sep=0pt] (probe) at (6.0,1.0)
+    {\includegraphics[width=.6\textwidth]{Figures/Lang_theta_as.png}};    
+\end{tikzpicture}
+\caption{\label{Fig:Langmuir} YALES2BIO test case  $k_s = 5.0 x 10^{8} [M^{-1}s^{-1}] $, $k_d = 2.5 x 10^{-4} [s^{-1}]$ $S_T = 1.0 x 10^{-7} [m^{-2}]$, $A_0 = 9.0 x 10^{-7} [\frac{mol}{m^{3}} ]$}
+\end{figure}
+\subsection{Surface Reaction}
+Once the protein is bonded to the wall it can follow a process of auto-activation. Since this process depends on the wall surface a flux boundary condition needs to be taken into account. A way to determine the boundary flux of the activated specie is to make a mass balance at the surface and volume interface. The mass balance at the reactive interface from \citep{Chabanne:2015} 
+\begin{equation}
+
+\end{equation} 
+
+\subsection{First order reaction}
+\subsection{1D Channel}
 \subsection{Michaeles Menten}
-\subsubsection{0D Reactor}
-\subsubsection{1D Reactor}
-\subsection{Convection, Diffusion Reaction}
 
 \section{Appendix Enzyme Kinetics}
 \subsubsection{Volume enzymatic reactions}
